@@ -64,8 +64,8 @@ public interface DiscogsDBApiCaller {
     Call<CommunityReleaseRating> getCommunityReleaseRating(@Path("release_id") long releaseId);
 
     /**
-     * The Master resource represents a set of similar Releases. Masters (also known as “master releases”)
-     * have a “main release” which is often the chronologically earliest.
+     * The Master resource represents a set of similar Releases. Masters (also known as "master releases")
+     * have a “main release�? which is often the chronologically earliest.
      */
     @GET("masters/{master_id}")
     Call<MasterRelease> getMasterRelease(@Path("master_id") long masterId);

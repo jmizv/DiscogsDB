@@ -39,6 +39,8 @@ import ru.blizzed.discogsdb.params.ParamsConverter;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import ru.blizzed.discogsdb.model.user.CollectionValue;
+import ru.blizzed.discogsdb.model.user.Folders;
 
 public class DiscogsDBApi {
 
@@ -168,7 +170,7 @@ public class DiscogsDBApi {
         return null;
     }
 
-    public static DiscogsDBCaller<Pgae<Release>> getCollectionItemsByFolder(Param... params) {
+    public static DiscogsDBCaller<Page<Release>> getCollectionItemsByFolder(Param... params) {
         return null;
     }
 

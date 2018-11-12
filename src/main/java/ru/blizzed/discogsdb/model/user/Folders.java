@@ -15,12 +15,16 @@
  */
 package ru.blizzed.discogsdb.model.user;
 
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
+
 /**
  *
  * @author aschulze
  */
 public class Folders {
 
+    @SerializedName("folders")
     private List<Folder> folders;
 
     public Folders() {

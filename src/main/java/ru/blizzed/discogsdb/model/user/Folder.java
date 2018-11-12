@@ -1,5 +1,7 @@
 package ru.blizzed.discogsdb.model.user;
 
+import com.google.gson.annotations.SerializedName;
+
 
 /**
  *
