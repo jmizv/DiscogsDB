@@ -166,12 +166,12 @@ public class DiscogsDBApi {
         return new DiscogsDBCaller<>(getCaller().searchMaster(getAuthData().getConsumerKey(), getAuthData().getConsumerSecret(), Type.MASTER.lower(), ParamsConverter.asMap(params)));
     }
 
-    public static DiscogsDBCaller<Folders> getCollectionFolders(Param... params) {
-        return null;
+    public static DiscogsDBCaller<Folders> getCollectionFolders(String username) {
+        return new DiscogsDBCaller<>(getCaller().getCollectionFolders(username));
     }
 
-    public static DiscogsDBCaller<Page<Release>> getCollectionItemsByFolder(Param... params) {
-        return null;
+    public static DiscogsDBCaller<Page<ReleaseSearchResult>> getCollectionItemsByFolder(String username, int folderId, Param... params) {
+        return new DiscogsDBCaller<>(getCaller().getCollectionItemsByFolder(username, folderId, ParamsConverter.asMap(params)));
     }
 
     public static DiscogsDBCaller<CollectionValue> getCollectionValue(Param... params) {

@@ -36,6 +36,7 @@ import ru.blizzed.discogsdb.model.search.BaseSearchResult;
 import ru.blizzed.discogsdb.model.search.ReleaseSearchResult;
 
 import java.util.Map;
+import ru.blizzed.discogsdb.model.user.Folders;
 
 public interface DiscogsDBApiCaller {
 
@@ -119,4 +120,9 @@ public interface DiscogsDBApiCaller {
     @GET("database/search")
     Call<Page<ReleaseSearchResult>> searchMaster(@Query("key") String key, @Query("secret") String secret, @Query("type") String type, @QueryMap Map<String, String> queryMap);
 
+    @GET("users/{username}/collection/folders")
+    Call<Folders> getCollectionFolders(@Path("username") String username);
+    
+    @GET("users/{username}/collection/folders/{folder_id}/releases")
+    Call<Page<ReleaseSearchResult>> getCollectionItemsByFolder(@Path("username") String username, @Path("folder_id") int folderId, @QueryMap Map<String, String> queryMap);
 }
