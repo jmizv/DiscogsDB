@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package ru.blizzed.discogsdb;
 
 import okhttp3.HttpUrl;
@@ -84,8 +83,9 @@ public class DiscogsDBApi {
     }
 
     public static void initialize(DiscogsAuthData discogsAuthData) {
-        if (instance == null)
+        if (instance == null) {
             instance = new DiscogsDBApi(discogsAuthData);
+        }
     }
 
     public static void initialize() {
@@ -101,9 +101,9 @@ public class DiscogsDBApi {
         return instance != null;
     }
 
-
-    /** Methods **/
-
+    /**
+     * Methods *
+     */
     public static DiscogsDBCaller<Release> getRelease(long releaseId) {
         return new DiscogsDBCaller<>(getCaller().getRelease(releaseId));
     }
@@ -164,6 +164,17 @@ public class DiscogsDBApi {
         return new DiscogsDBCaller<>(getCaller().searchMaster(getAuthData().getConsumerKey(), getAuthData().getConsumerSecret(), Type.MASTER.lower(), ParamsConverter.asMap(params)));
     }
 
+    public static DiscogsDBCaller<Folders> getCollectionFolders(Param... params) {
+        return null;
+    }
+
+    public static DiscogsDBCaller<Pgae<Release>> getCollectionItemsByFolder(Param... params) {
+        return null;
+    }
+
+    public static DiscogsDBCaller<CollectionValue> getCollectionValue(Param... params) {
+        return null;
+    }
 
     Error parseError(ResponseBody responseBody) throws IOException {
         Converter<ResponseBody, Error> converter = retrofit.responseBodyConverter(Error.class, new Annotation[0]);
@@ -187,11 +198,15 @@ public class DiscogsDBApi {
     }
 
     private static void checkInit() {
-        if (!isInitialized()) throw new RuntimeException("DiscogsDBApi must be initialized first.");
+        if (!isInitialized()) {
+            throw new RuntimeException("DiscogsDBApi must be initialized first.");
+        }
     }
 
     private static void checkAuth() {
-        if (!hasAuthData()) throw new RuntimeException("You must set authentication data to use search method.");
+        if (!hasAuthData()) {
+            throw new RuntimeException("You must set authentication data to use search method.");
+        }
     }
 
 }
