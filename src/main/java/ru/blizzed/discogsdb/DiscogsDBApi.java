@@ -22,8 +22,14 @@ import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.blizzed.discogsdb.model.*;
 import ru.blizzed.discogsdb.model.Error;
+import ru.blizzed.discogsdb.model.CommunityReleaseRating;
+import ru.blizzed.discogsdb.model.Currency;
+import ru.blizzed.discogsdb.model.Page;
+import ru.blizzed.discogsdb.model.SearchPage;
+import ru.blizzed.discogsdb.model.Type;
+import ru.blizzed.discogsdb.model.user.CollectionValue;
+import ru.blizzed.discogsdb.model.user.Folders;
 import ru.blizzed.discogsdb.model.artist.Artist;
 import ru.blizzed.discogsdb.model.artist.ArtistRelease;
 import ru.blizzed.discogsdb.model.label.Label;
@@ -39,8 +45,8 @@ import ru.blizzed.discogsdb.params.ParamsConverter;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import ru.blizzed.discogsdb.model.user.CollectionValue;
-import ru.blizzed.discogsdb.model.user.Folders;
+import ru.blizzed.discogsdb.model.Page;
+import ru.blizzed.discogsdb.model.user.Fields;
 
 public class DiscogsDBApi {
 
@@ -103,9 +109,6 @@ public class DiscogsDBApi {
         return instance != null;
     }
 
-    /**
-     * Methods *
-     */
     public static DiscogsDBCaller<Release> getRelease(long releaseId) {
         return new DiscogsDBCaller<>(getCaller().getRelease(releaseId));
     }
@@ -174,8 +177,12 @@ public class DiscogsDBApi {
         return new DiscogsDBCaller<>(getCaller().getCollectionItemsByFolder(username, folderId, ParamsConverter.asMap(params)));
     }
 
-    public static DiscogsDBCaller<CollectionValue> getCollectionValue(Param... params) {
-        return null;
+    public static DiscogsDBCaller<CollectionValue> getCollectionValue(String username) {
+        return new DiscogsDBCaller<>(getCaller().getCollectionValue(getAuthData().getConsumerKey(), getAuthData().getConsumerSecret(), username));
+    }
+
+    public static DiscogsDBCaller<Fields> getListCustomFields(String username) {
+        return new DiscogsDBCaller<>(getCaller().getListCustomFields(getAuthData().getConsumerKey(), getAuthData().getConsumerSecret(), username));
     }
 
     Error parseError(ResponseBody responseBody) throws IOException {
