@@ -19,7 +19,7 @@ public class Folder {
     private String name;
     
     @SerializedName("resource_url")
-    private int resourceUrl;
+    private String resourceUrl;
     
     
 

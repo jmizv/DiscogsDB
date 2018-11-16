@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package ru.blizzed.discogsdb.model.search;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import ru.blizzed.discogsdb.model.release.Release;
 
 public class ReleaseSearchResult extends BaseSearchResult {
 
@@ -45,6 +45,25 @@ public class ReleaseSearchResult extends BaseSearchResult {
     private List<String> genres;
 
     private Community community;
+
+    @SerializedName("basic_information")
+    private Release basicInformation;
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+
+    public Release getBasicInformation() {
+        return basicInformation;
+    }
+
+    public void setBasicInformation(Release basicInformation) {
+        this.basicInformation = basicInformation;
+    }
 
     public List<String> getStyles() {
         return styles;
@@ -79,6 +98,7 @@ public class ReleaseSearchResult extends BaseSearchResult {
     }
 
     public static class Community {
+
         private int want;
         private int have;
 
