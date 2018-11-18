@@ -201,7 +201,7 @@ public class DiscogsDBApi {
         return instance.caller;
     }
 
-    private static boolean hasAuthData() {
+    public static boolean hasAuthData() {
         checkInit();
         return instance.authData != null;
     }
