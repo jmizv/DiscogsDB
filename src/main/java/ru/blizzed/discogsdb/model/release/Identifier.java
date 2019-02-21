@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package ru.blizzed.discogsdb.model.release;
 
 import com.google.gson.annotations.SerializedName;
@@ -33,5 +32,10 @@ public class Identifier {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Identifier{" + type + "=" + value + '}';
     }
 }
