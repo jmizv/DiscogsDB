@@ -28,6 +28,7 @@ public class ReleaseSearchResult extends BaseSearchResult {
     @SerializedName("format")
     private List<String> formats;
 
+    @SerializedName("country")
     private String country;
 
     @SerializedName("barcode")
@@ -39,6 +40,7 @@ public class ReleaseSearchResult extends BaseSearchResult {
     @SerializedName("catno")
     private String catNo;
 
+    @SerializedName("year")
     private Integer year;
 
     @SerializedName("genre")

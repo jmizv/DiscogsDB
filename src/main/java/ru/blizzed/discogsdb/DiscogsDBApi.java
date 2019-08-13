@@ -185,6 +185,10 @@ public class DiscogsDBApi {
         return new DiscogsDBCaller<>(getCaller().getListCustomFields(getAuthData().getConsumerKey(), getAuthData().getConsumerSecret(), username));
     }
 
+    public static DiscogsDBCaller<Page<ReleaseSearchResult>> getWantlist(String username, Param... params) {
+        return new DiscogsDBCaller<>(getCaller().getWantlist(username, ParamsConverter.asMap(params)));
+    }
+
     Error parseError(ResponseBody responseBody) throws IOException {
         Converter<ResponseBody, Error> converter = retrofit.responseBodyConverter(Error.class, new Annotation[0]);
         return converter.convert(responseBody);

@@ -80,7 +80,10 @@ public final class DiscogsDBCaller<ResultType> {
     }
 
     private Error parseError(Response response) throws IOException {
+        if (false) {
+            throw new IOException(response.code() + ": " + response.message());
+        }
         return DiscogsDBApi.getInstance().parseError(response.errorBody());
     }
-
+        
 }

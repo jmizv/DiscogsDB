@@ -31,6 +31,7 @@ public class BaseSearchResult {
     @SerializedName("resource_url")
     private String resourceUrl;
 
+    @SerializedName("id")
     private long id;
 
     private Type type;

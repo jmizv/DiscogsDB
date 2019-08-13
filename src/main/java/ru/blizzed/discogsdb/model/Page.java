@@ -22,7 +22,7 @@ import java.util.List;
 
 public class Page<ContentType> extends PaginatedResult {
 
-    @SerializedName(value = "release", alternate = {"results", "versions", "releases"})
+    @SerializedName(value = "release", alternate = {"results", "versions", "releases", "wants"})
     private List<ContentType> content;
 
     public List<ContentType> getContent() {
